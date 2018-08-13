@@ -15,7 +15,7 @@ ARG MANAGER_HOST=lin64vm505.rofa.tibco.com
 ARG MANAGER_PORT=8080
 
 # Obtain the vendor-provided archive from Artifactory
-ARG GS_ARCHIVE_URL=http://${MANAGER_HOST}:${MANAGER_PORT}/livecluster/public_html/register/install/unixengine/DSEngineLinux64.tar.gz
+ARG GS_ARCHIVE_URL=http://route-swr7n-myproject.192.168.99.100.nip.io/livecluster/public_html/register/install/unixengine/DSEngineLinux64.tar.gz
 
 # The maximum heap size, in MB, as specified by the -Xmx<size> java option.
 # Default is 1024m
@@ -34,5 +34,5 @@ EXPOSE 27159/tcp
 RUN yum -y install bind-utils file hostname iproute iputils net-tools nmap traceroute && yum clean all -y
 WORKDIR /opt/datasynapse/engine
 RUN chmod -R a+w /opt/datasynapse/engine
-CMD cd /opt/datasynapse/engine && ./configure.sh -s ${MANAGER_HOST}:${MANAGER_PORT} && ./engine.sh start && sleep infinity
+CMD cd /opt/datasynapse/engine && ./configure.sh -s route-swr7n-myproject.192.168.99.100.nip.io && ./engine.sh start && sleep infinity
 
